@@ -129,7 +129,7 @@ public class SprintControllerTest {
         BindingResult result = bindAndValidate(mockRequest, formObject);
 
         RedirectAttributesModelMap attributes = new RedirectAttributesModelMap();
-
+        //INFO: Server startup in 8603 ms
 
         String view = controller.add(formObject, result, attributes);
 
@@ -156,7 +156,7 @@ public class SprintControllerTest {
 
         String view = controller.add(formObject, result, attributes);
 
-        assertEquals(SprintController.VIEW_ADD, view);
+        assertEquals(SprintController.SPRINT_ADD, view);
     }
     
     @Test
@@ -174,7 +174,7 @@ public class SprintControllerTest {
 
         String view = controller.add(formObject, result, attributes);
 
-        assertEquals(SprintController.VIEW_ADD, view);
+        assertEquals(SprintController.SPRINT_ADD, view);
     }
     
     
