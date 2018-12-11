@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ro.sapientia2015.story.dto.StoryDTO;
+import ro.sapientia2015.story.dto.SprintDTO;
 import ro.sapientia2015.story.exception.NotFoundException;
 import ro.sapientia2015.story.model.Story;
 import ro.sapientia2015.story.service.StoryService;
@@ -54,6 +55,8 @@ public class StoryController {
 
     @RequestMapping(value = "/story/add", method = RequestMethod.GET)
     public String showAddForm(Model model) {
+    	SprintDTO sprints = new SprintDTO();
+    	
         StoryDTO formObject = new StoryDTO();
         model.addAttribute(MODEL_ATTRIBUTE, formObject);
 

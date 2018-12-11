@@ -16,12 +16,13 @@
             <p><c:out value="${story.description}"/></p>
         </div>
         <div class="action-buttons">
+        	<input type="hidden" value="/story/delete/${story.id}" id="delete-url">
             <a href="/story/update/${story.id}" class="btn btn-primary"><spring:message code="label.update.story.link"/></a>
-            <a id="delete-story-link" class="btn btn-primary"><spring:message code="label.delete.story.link"/></a>
+            <a id="delete-link" class="btn btn-primary"><spring:message code="label.delete.story.link"/></a>
         </div>
     </div>
-    <script id="template-delete-story-confirmation-dialog" type="text/x-handlebars-template">
-        <div id="delete-story-confirmation-dialog" class="modal">
+    <script id="template-delete-confirmation-dialog" type="text/x-handlebars-template">
+        <div id="delete-confirmation-dialog" class="modal">
             <div class="modal-header">
                 <button class="close" data-dismiss="modal">×</button>
                 <h3><spring:message code="label.story.delete.dialog.title"/></h3>
@@ -30,8 +31,8 @@
                 <p><spring:message code="label.story.delete.dialog.message"/></p>
             </div>
             <div class="modal-footer">
-                <a id="cancel-story-button" href="#" class="btn"><spring:message code="label.cancel"/></a>
-                <a id="delete-story-button" href="#" class="btn btn-primary"><spring:message code="label.delete.story.button"/></a>
+                <a id="cancel-button" href="#" class="btn"><spring:message code="label.cancel"/></a>
+                <a id="delete-button" href="#" class="btn btn-primary"><spring:message code="label.delete.story.button"/></a>
             </div>
         </div>
     </script>

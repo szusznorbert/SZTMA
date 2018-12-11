@@ -35,7 +35,7 @@ public class SprintController {
 
 	    protected static final String FLASH_MESSAGE_KEY_ERROR = "errorMessage";
 	    protected static final String FLASH_MESSAGE_KEY_FEEDBACK = "feedbackMessage";
-
+	    protected static final String PARAMETER_ID = "id";
 	    //protected static final String MODEL_ATTRIBUTE = "story";
 	    //protected static final String MODEL_ATTRIBUTE_LIST = "stories";
 
@@ -95,16 +95,18 @@ public class SprintController {
 		model.addAttribute("sprint", sprint);
 		return SPRINT_ADD;
 	}
-   //new function to delete the sprints
+   //new function to add the sprints
 	@RequestMapping(value = "/sprint/add", method = RequestMethod.POST)
 	public String add(@Valid @ModelAttribute(MODEL_ATTRIBUTE) SprintDTO dto, BindingResult result, RedirectAttributes attributes) {
 		if(result.hasErrors()){
 			return SPRINT_ADD;
 		}
 		
-		service.add(dto);
-		
-		return createRedirectViewPath(SPRINT_LIST);
+		Sprint added = service.add(dto);
+        addFeedbackMessage(attributes, FEEDBACK_MESSAGE_KEY_ADDED, added.getTitle());
+        attributes.addAttribute(PARAMETER_ID, added.getId());
+
+        return createRedirectViewPath(REQUEST_MAPPING_VIEW);
 	}
 	//new function to open the newly added SPRINT
 	
@@ -119,7 +121,7 @@ public class SprintController {
     public String deleteById(@PathVariable("id") Long id, RedirectAttributes attributes) throws NotFoundException {
         Sprint deleted = service.deleteById(id);
         addFeedbackMessage(attributes, FEEDBACK_MESSAGE_KEY_DELETED, deleted.getTitle());
-        return createRedirectViewPath(SPRINT_LIST);
+        return createRedirectViewPath("/sprint/list");
     }
 	
 	  @RequestMapping(value = "/sprint/update/{id}", method = RequestMethod.GET)
