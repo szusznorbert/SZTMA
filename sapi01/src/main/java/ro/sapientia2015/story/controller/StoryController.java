@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ro.sapientia2015.story.dto.StoryDTO;
-import ro.sapientia2015.story.dto.SprintDTO;
 import ro.sapientia2015.story.exception.NotFoundException;
 import ro.sapientia2015.story.model.Story;
+import ro.sapientia2015.story.model.Sprint;
 import ro.sapientia2015.story.service.StoryService;
+import ro.sapientia2015.story.service.SprintService;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -49,13 +50,17 @@ public class StoryController {
 
     @Resource
     private StoryService service;
-
+    
+    @Resource
+    private SprintService sprintService;
+    
     @Resource
     private MessageSource messageSource;
 
     @RequestMapping(value = "/story/add", method = RequestMethod.GET)
     public String showAddForm(Model model) {
-    	SprintDTO sprints = new SprintDTO();
+		List<Sprint> sprints = sprintService.findAll();
+        model.addAttribute("sprints", sprints);
     	
         StoryDTO formObject = new StoryDTO();
         model.addAttribute(MODEL_ATTRIBUTE, formObject);
