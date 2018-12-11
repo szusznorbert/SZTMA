@@ -69,7 +69,7 @@ public class SprintControllerTest {
 
         String view = controller.listSprints(model);
 
-        assertEquals("sprint/list", view);
+        assertEquals("/print/list", view);
      }
 
     @Test
@@ -116,14 +116,17 @@ public class SprintControllerTest {
     @Test
     public void add() {
         SprintDTO formObject = new SprintDTO();
-
-        formObject.setTitle("title");
+       
+        
+        formObject.setTitle("");
+   
         formObject.setDescription("desc");
+        
         
         Sprint model = Sprint.getBuilder("title")
         		.description("desc").build();
         
-        when(serviceMock.add(formObject)).thenReturn(model);
+        //when(serviceMock.add(formObject)).thenReturn(model);
 
         MockHttpServletRequest mockRequest = new MockHttpServletRequest("POST", "/sprint/add");
         BindingResult result = bindAndValidate(mockRequest, formObject);
