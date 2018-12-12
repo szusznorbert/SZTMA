@@ -44,7 +44,7 @@ public class SprintController {
 	    //protected static final String REQUEST_MAPPING_LIST = "/";
 	    protected static final String REQUEST_MAPPING_VIEW = "/sprint/{id}";
 
-	    protected static final String SPRINT_ADD = "sprint/add";
+	    public static final String SPRINT_ADD = "sprint/add";
 	    protected static final String SPRINT_LIST = "/sprint/list";
 	    protected static final String SPRINT_UPDATE = "sprint/update";
 	    protected static final String SPRINT_VIEW = "sprint/view";
