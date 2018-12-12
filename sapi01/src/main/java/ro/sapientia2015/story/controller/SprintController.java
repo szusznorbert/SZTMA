@@ -34,25 +34,26 @@ public class SprintController {
 	    protected static final String FEEDBACK_MESSAGE_KEY_DELETED = "feedback.message.sprint.deleted";
 
 	    protected static final String FLASH_MESSAGE_KEY_ERROR = "errorMessage";
-	    protected static final String FLASH_MESSAGE_KEY_FEEDBACK = "feedbackMessage";
-	    protected static final String PARAMETER_ID = "id";
+	    public static final String FLASH_MESSAGE_KEY_FEEDBACK = "feedbackMessage";
+	    public static final String PARAMETER_ID = "id";
 	    //protected static final String MODEL_ATTRIBUTE = "story";
 	    //protected static final String MODEL_ATTRIBUTE_LIST = "stories";
 
 	    protected static final String SPRINT_PARAMETER_ID = "id";
 
-	    //protected static final String REQUEST_MAPPING_LIST = "/";
-	    protected static final String REQUEST_MAPPING_VIEW = "/sprint/{id}";
+	    public static final String REQUEST_MAPPING_LIST = "/sprint/list";
+	    public static final String REQUEST_MAPPING_VIEW = "/sprint/{id}";
+	    public static final String MODEL_ATTRIBUTE_LIST = "sprints";
 
 	    public static final String SPRINT_ADD = "sprint/add";
-	    protected static final String SPRINT_LIST = "/sprint/list";
-	    protected static final String SPRINT_UPDATE = "sprint/update";
-	    protected static final String SPRINT_VIEW = "sprint/view";
+	    public static final String SPRINT_LIST = "/sprint/list";
+	    public static final String SPRINT_UPDATE = "sprint/update";
+	    public static final String SPRINT_VIEW = "sprint/view";
 	
 	    @Resource
 	    private MessageSource messageSource;
 
-	private static final String MODEL_ATTRIBUTE = "sprint";
+	public static final String MODEL_ATTRIBUTE = "sprint";
 	
 	 private String getMessage(String messageCode, Object... messageParameters) {
 	        Locale current = LocaleContextHolder.getLocale();
